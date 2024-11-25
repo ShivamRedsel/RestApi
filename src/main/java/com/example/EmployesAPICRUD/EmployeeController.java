@@ -27,7 +27,6 @@ public class EmployeeController {
     @PostMapping("/employees")
     public String createEmployee(@RequestBody Employee employee){
         employeeRepository.save(employee);
-        System.out.println("hitttttttttt");
         return "Employee saved successfully in db";
     }
 
