@@ -101,4 +101,29 @@ public class EmployeeController {
         return new ResponseEntity<List<Employee>>(empList.get(), HttpStatus.FOUND);
     }
 
+
+    //===================Using Api Response======================================
+    @GetMapping("/employees/{empid}")
+    public ResponseEntity<ApiResponse<Employee>> getEmployeeByIdByApiResponse(@PathVariable Long empid) {
+        Optional<Employee> emp = employeeRepository.findById(empid);
+
+        if (emp.isPresent()) {
+            ApiResponse<Employee> apiResponse = new ApiResponse<>(
+                    true,
+                    "Employee found successfully",
+                    HttpStatus.OK.value(),
+                    List.of(emp.get())
+            );
+            return ResponseEntity.ok(apiResponse);
+        } else {
+            ApiResponse<Employee> apiResponse = new ApiResponse<>(
+                    false,
+                    "Employee not found",
+                    HttpStatus.NOT_FOUND.value(),
+                    null
+            );
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiResponse);
+        }
+    }
+
 }
