@@ -1,4 +1,5 @@
-
+Create Project BY Spring Initialiser:
+Dependencies>Spring Web >Data JPA > MYSQL Connector.
 ##1.Technology Used:-
 Java 8 (Version should be 8 or higher than 8)
 Spring Boot (Dependency: Spring-web, Spring-jpa, MySQL)
